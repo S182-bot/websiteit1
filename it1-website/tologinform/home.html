@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT1 Platform</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#4f46e5", secondary: "#6366f1" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f9fafb;
+      }
+      .nav-item {
+        position: relative;
+      }
+      .nav-item::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #4f46e5;
+        transition: width 0.3s ease;
+      }
+      .nav-item.active::after,
+      .nav-item:hover::after {
+        width: 100%;
+      }
+      .gallery-item {
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+      .gallery-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .gallery-item img {
+        transition: transform 0.5s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .section {
+        display: none;
+      }
+      .section.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <a href="#" class="flex items-center">
+              <span class="text-2xl font-['Pacifico'] text-primary">G12</span>
+              <span class="ml-2 text-lg font-semibold text-gray-800">IT1</span>
+            </a>
+          </div>
+          <div class="flex items-center space-x-8">
+            <nav class="hidden md:flex items-center space-x-8">
+              <a
+                href="#gallery"
+                class="nav-item active text-gray-800 hover:text-primary transition-colors"
+                >Gallery</a
+              >
+              <a
+                href="#practice"
+                class="nav-item text-gray-800 hover:text-primary transition-colors"
+                >Practice</a
+              >
+              <a
+                href="#study"
+                class="nav-item text-gray-800 hover:text-primary transition-colors"
+                >Study</a
+              >
+              <a
+                href="../index.html"
+                id="logoutButton"
+                class="text-gray-800 hover:text-primary transition-colors flex items-center">
+                <span class="mr-1">Logout</span>
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-logout-box-line"></i>
+                </div>
+              </a>
+            </nav>
+            <div
+              class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20person%20with%20a%20friendly%20smile%2C%20high%20quality%20portrait%20photo%2C%20professional%20lighting%2C%20neutral%20background%2C%20business%20casual%20attire&width=200&height=200&seq=1&orientation=squarish"
+                alt="Profile"
+                class="w-full h-full object-cover" />
+            </div>
+            <button
+              class="md:hidden w-10 h-10 flex items-center justify-center">
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-menu-line text-xl"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+      <!-- Gallery Section -->
+      <section id="gallery" class="section active">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold text-gray-900">Gallery</h1>
+          <p class="text-gray-600 mt-2">
+            Explore our collection of 20 stunning images
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- Gallery Items -->
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=modern%20data%20center%20interior%20with%20rows%20of%20server%20racks%2C%20blue%20LED%20lighting%2C%20network%20cables%2C%20advanced%20cooling%20systems%2C%20clean%20high-tech%20environment%2C%20professional%20IT%20infrastructure%20photography&width=400&height=300&seq=1&orientation=landscape"
+                alt="Data Center Infrastructure"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">
+                Data Center Infrastructure
+              </h3>
+              <p class="text-sm text-gray-500 mt-1">April 25, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=cybersecurity%20operations%20center%20with%20multiple%20monitoring%20screens%2C%20real-time%20threat%20detection%2C%20network%20security%20visualizations%2C%20professional%20IT%20security%20environment%2C%20high-tech%20control%20room&width=400&height=300&seq=2&orientation=landscape"
+                alt="Security Operations Center"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">
+                Security Operations Center
+              </h3>
+              <p class="text-sm text-gray-500 mt-1">April 22, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=modern%20software%20development%20workspace%20with%20multiple%20monitors%20displaying%20code%2C%20development%20environment%2C%20programming%20interface%2C%20clean%20tech%20setup%2C%20professional%20IT%20workspace&width=400&height=300&seq=3&orientation=landscape"
+                alt="Development Environment"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Development Environment</h3>
+              <p class="text-sm text-gray-500 mt-1">April 18, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=artificial%20intelligence%20visualization%20with%20neural%20networks%2C%20machine%20learning%20algorithms%2C%20data%20streams%2C%20futuristic%20AI%20technology%20interface%2C%20professional%20tech%20visualization&width=400&height=300&seq=4&orientation=landscape"
+                alt="AI Technology"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">AI Technology</h3>
+              <p class="text-sm text-gray-500 mt-1">April 15, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=wildlife%20photography%20of%20a%20majestic%20eagle%20in%20flight%2C%20detailed%20feathers%2C%20blue%20sky%20background%2C%20professional%20nature%20photography%2C%20high%20resolution%20animal%20image%2C%20telephoto%20lens&width=400&height=300&seq=5&orientation=landscape"
+                alt="Eagle in Flight"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Soaring Eagle</h3>
+              <p class="text-sm text-gray-500 mt-1">April 12, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=autumn%20forest%20with%20vibrant%20red%20and%20orange%20leaves%2C%20sunlight%20streaming%20through%20trees%2C%20foggy%20morning%20atmosphere%2C%20professional%20landscape%20photography%2C%20high%20resolution%20nature%20image&width=400&height=300&seq=6&orientation=landscape"
+                alt="Autumn Forest"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Autumn Glow</h3>
+              <p class="text-sm text-gray-500 mt-1">April 10, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=night%20photography%20of%20milky%20way%20galaxy%20over%20mountains%2C%20starry%20sky%2C%20long%20exposure%2C%20professional%20astrophotography%2C%20high%20resolution%20space%20image%2C%20dramatic%20landscape%20silhouette&width=400&height=300&seq=7&orientation=landscape"
+                alt="Night Sky"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Cosmic Wonder</h3>
+              <p class="text-sm text-gray-500 mt-1">April 8, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=architectural%20detail%20of%20historic%20building%20with%20ornate%20carvings%20and%20sculptures%2C%20golden%20hour%20lighting%2C%20professional%20architectural%20photography%2C%20high%20resolution%20detail%20shot&width=400&height=300&seq=8&orientation=landscape"
+                alt="Architectural Detail"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Ancient Artistry</h3>
+              <p class="text-sm text-gray-500 mt-1">April 5, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=underwater%20photography%20of%20coral%20reef%20with%20colorful%20fish%2C%20clear%20blue%20water%2C%20sunlight%20rays%20penetrating%20surface%2C%20professional%20marine%20photography%2C%20high%20resolution%20underwater%20image&width=400&height=300&seq=9&orientation=landscape"
+                alt="Underwater Scene"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Ocean Depths</h3>
+              <p class="text-sm text-gray-500 mt-1">April 3, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=minimalist%20still%20life%20photography%20of%20geometric%20objects%20with%20strong%20shadows%2C%20clean%20composition%2C%20studio%20lighting%2C%20professional%20product%20photography%2C%20high%20resolution%20abstract%20image&width=400&height=300&seq=10&orientation=landscape"
+                alt="Minimalist Still Life"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Geometric Study</h3>
+              <p class="text-sm text-gray-500 mt-1">April 1, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=street%20photography%20of%20rainy%20city%20at%20night%20with%20neon%20reflections%20on%20wet%20pavement%2C%20urban%20scene%2C%20professional%20night%20photography%2C%20high%20resolution%20cityscape%2C%20atmospheric%20lighting&width=400&height=300&seq=11&orientation=landscape"
+                alt="Rainy Night Street"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Neon Reflections</h3>
+              <p class="text-sm text-gray-500 mt-1">March 29, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=portrait%20of%20elderly%20person%20with%20character-filled%20face%2C%20dramatic%20lighting%2C%20black%20and%20white%20photography%2C%20professional%20portrait%2C%20high%20resolution%20human%20interest%20image&width=400&height=300&seq=12&orientation=landscape"
+                alt="Elderly Portrait"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Wisdom Lines</h3>
+              <p class="text-sm text-gray-500 mt-1">March 27, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=high-speed%20photography%20of%20water%20droplet%20collision%20creating%20crown%20splash%2C%20freeze%20motion%2C%20studio%20lighting%2C%20professional%20macro%20photography%2C%20high%20resolution%20water%20image&width=400&height=300&seq=13&orientation=landscape"
+                alt="Water Droplet"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Liquid Crown</h3>
+              <p class="text-sm text-gray-500 mt-1">March 25, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=aerial%20photography%20of%20winding%20river%20through%20forest%20landscape%2C%20autumn%20colors%2C%20drone%20perspective%2C%20professional%20landscape%20photography%2C%20high%20resolution%20nature%20image&width=400&height=300&seq=14&orientation=landscape"
+                alt="Winding River"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">River Journey</h3>
+              <p class="text-sm text-gray-500 mt-1">March 22, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=close-up%20photography%20of%20frost%20patterns%20on%20leaf%2C%20winter%20macro%20detail%2C%20crystal%20formations%2C%20professional%20nature%20photography%2C%20high%20resolution%20detail%20image&width=400&height=300&seq=15&orientation=landscape"
+                alt="Frost Patterns"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Frozen Artistry</h3>
+              <p class="text-sm text-gray-500 mt-1">March 20, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=silhouette%20of%20people%20against%20sunset%20at%20beach%2C%20golden%20hour%2C%20long%20shadows%2C%20professional%20landscape%20photography%2C%20high%20resolution%20sunset%20image%2C%20emotional%20atmosphere&width=400&height=300&seq=16&orientation=landscape"
+                alt="Beach Sunset"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Golden Moments</h3>
+              <p class="text-sm text-gray-500 mt-1">March 18, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=abandoned%20building%20interior%20with%20sunlight%20streaming%20through%20windows%2C%20urban%20exploration%2C%20atmospheric%20dust%20particles%2C%20professional%20architectural%20photography%2C%20high%20resolution%20urban%20decay%20image&width=400&height=300&seq=17&orientation=landscape"
+                alt="Abandoned Interior"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Time Capsule</h3>
+              <p class="text-sm text-gray-500 mt-1">March 15, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=abstract%20light%20painting%20photography%20with%20colorful%20light%20trails%2C%20long%20exposure%2C%20creative%20composition%2C%20professional%20abstract%20photography%2C%20high%20resolution%20light%20art%20image&width=400&height=300&seq=18&orientation=landscape"
+                alt="Light Painting"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Light Symphony</h3>
+              <p class="text-sm text-gray-500 mt-1">March 12, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=food%20photography%20of%20gourmet%20dish%20with%20artistic%20plating%2C%20shallow%20depth%20of%20field%2C%20professional%20culinary%20photography%2C%20high%20resolution%20gastronomy%20image%2C%20studio%20lighting&width=400&height=300&seq=19&orientation=landscape"
+                alt="Gourmet Dish"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Culinary Canvas</h3>
+              <p class="text-sm text-gray-500 mt-1">March 10, 2025</p>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=documentary%20photography%20of%20cultural%20festival%20with%20traditional%20costumes%2C%20vibrant%20colors%2C%20authentic%20moment%2C%20professional%20event%20photography%2C%20high%20resolution%20cultural%20image&width=400&height=300&seq=20&orientation=landscape"
+                alt="Cultural Festival"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Heritage Celebration</h3>
+              <p class="text-sm text-gray-500 mt-1">March 8, 2025</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Practice Section -->
+      <section id="practice" class="section">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold text-gray-900">Practice</h1>
+          <p class="text-gray-600 mt-2">
+            Interactive exercises to improve our skills
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- Practice Items -->
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=modern%20software%20development%20workspace%20with%20multiple%20monitors%2C%20mechanical%20keyboard%2C%20development%20tools%2C%20clean%20organized%20desk%20setup%2C%20professional%20IT%20equipment%2C%20high-tech%20environment&width=400&height=300&seq=21&orientation=landscape"
+                alt="Development Setup"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">
+                Development Environment Setup
+              </h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Configure your coding workspace
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=modern%20data%20center%20with%20server%20racks%2C%20network%20cables%2C%20LED%20status%20lights%2C%20clean%20organized%20infrastructure%2C%20professional%20IT%20equipment%2C%20high-tech%20environment&width=400&height=300&seq=22&orientation=landscape"
+                alt="Data Center"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Data Center Management</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Learn server and network administration
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=cybersecurity%20operations%20center%20with%20multiple%20monitoring%20screens%2C%20network%20security%20visualizations%2C%20threat%20detection%20systems%2C%20professional%20IT%20security%20environment&width=400&height=300&seq=23&orientation=landscape"
+                alt="Security Operations"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">
+                Cybersecurity Operations
+              </h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Master network security protocols
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=lighting%20setup%20diagram%20for%20portrait%20photography%20with%20softbox%2C%20reflector%2C%20and%20main%20light%20positions%2C%20studio%20lighting%20techniques%2C%20professional%20photography%20teaching%20material&width=400&height=300&seq=24&orientation=landscape"
+                alt="Lighting Setup"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Lighting Techniques</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Master different lighting setups
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=color%20theory%20wheel%20with%20complementary%20and%20analogous%20color%20relationships%2C%20photography%20color%20grading%20concept%2C%20professional%20design%20teaching%20material%2C%20educational%20content&width=400&height=300&seq=25&orientation=landscape"
+                alt="Color Theory"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Color Theory</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Understand color relationships
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=photo%20editing%20workflow%20with%20before%20and%20after%20comparison%2C%20professional%20post-processing%20techniques%2C%20photo%20retouching%20example%2C%20educational%20photography%20content&width=400&height=300&seq=26&orientation=landscape"
+                alt="Photo Editing"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Post-Processing</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Learn photo editing techniques
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=portrait%20photography%20posing%20guide%20with%20model%20examples%2C%20professional%20portrait%20techniques%2C%20educational%20photography%20content%2C%20studio%20portrait%20setup&width=400&height=300&seq=27&orientation=landscape"
+                alt="Portrait Posing"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Portrait Posing</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Master portrait photography techniques
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=landscape%20photography%20location%20scouting%20with%20map%20and%20planning%20tools%2C%20golden%20hour%20timing%20chart%2C%20professional%20landscape%20techniques%2C%20educational%20photography%20content&width=400&height=300&seq=28&orientation=landscape"
+                alt="Location Scouting"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Location Scouting</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Find perfect photography locations
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=macro%20photography%20techniques%20with%20close-up%20lens%20and%20extension%20tubes%2C%20professional%20macro%20equipment%20setup%2C%20educational%20photography%20content%2C%20detailed%20macro%20shot%20example&width=400&height=300&seq=29&orientation=landscape"
+                alt="Macro Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Macro Techniques</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Capture stunning close-up images
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=night%20photography%20star%20trails%20technique%20with%20camera%20settings%20guide%2C%20astrophotography%20basics%2C%20professional%20night%20photography%20setup%2C%20educational%20content&width=400&height=300&seq=30&orientation=landscape"
+                alt="Night Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Night Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Master low-light shooting techniques
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=action%20photography%20with%20fast%20shutter%20speed%20examples%2C%20sports%20photography%20techniques%2C%20motion%20freeze%20techniques%2C%20professional%20photography%20teaching%20material&width=400&height=300&seq=31&orientation=landscape"
+                alt="Action Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Action Shots</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Capture fast-moving subjects
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=product%20photography%20setup%20with%20light%20tent%2C%20reflectors%2C%20and%20camera%20positioning%2C%20e-commerce%20photography%20techniques%2C%20professional%20product%20photography%20teaching%20material&width=400&height=300&seq=32&orientation=landscape"
+                alt="Product Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Product Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Create professional product images
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=architectural%20photography%20with%20perspective%20correction%20techniques%2C%20building%20photography%20guide%2C%20professional%20architecture%20photography%20teaching%20material&width=400&height=300&seq=33&orientation=landscape"
+                alt="Architectural Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">
+                Architectural Photography
+              </h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Master building photography
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=street%20photography%20techniques%20with%20candid%20capture%20examples%2C%20urban%20photography%20guide%2C%20professional%20street%20photography%20teaching%20material&width=400&height=300&seq=34&orientation=landscape"
+                alt="Street Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Street Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Capture authentic urban moments
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=drone%20photography%20techniques%20with%20aerial%20composition%20examples%2C%20drone%20photography%20guide%2C%20professional%20aerial%20photography%20teaching%20material&width=400&height=300&seq=35&orientation=landscape"
+                alt="Drone Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Drone Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Create stunning aerial images
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=food%20photography%20styling%20techniques%20with%20prop%20arrangement%20examples%2C%20culinary%20photography%20guide%2C%20professional%20food%20photography%20teaching%20material&width=400&height=300&seq=36&orientation=landscape"
+                alt="Food Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Food Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Style and capture delicious dishes
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=black%20and%20white%20photography%20conversion%20techniques%20with%20contrast%20examples%2C%20monochrome%20photography%20guide%2C%20professional%20black%20and%20white%20photography%20teaching%20material&width=400&height=300&seq=37&orientation=landscape"
+                alt="Black and White Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Black and White</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Create powerful monochrome images
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=wildlife%20photography%20techniques%20with%20telephoto%20lens%20setup%2C%20animal%20photography%20guide%2C%20professional%20wildlife%20photography%20teaching%20material&width=400&height=300&seq=38&orientation=landscape"
+                alt="Wildlife Photography"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Wildlife Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Capture animals in natural habitats
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=creative%20photography%20techniques%20with%20intentional%20camera%20movement%20examples%2C%20abstract%20photography%20guide%2C%20professional%20creative%20photography%20teaching%20material&width=400&height=300&seq=39&orientation=landscape"
+                alt="Creative Techniques"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Creative Techniques</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Explore experimental photography
+              </p>
+            </div>
+          </div>
+          <div
+            class="gallery-item bg-white rounded shadow-sm overflow-hidden cursor-pointer">
+            <div class="h-48 overflow-hidden relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20business%20marketing%20strategies%20with%20social%20media%20examples%2C%20photography%20business%20guide%2C%20professional%20photography%20business%20teaching%20material&width=400&height=300&seq=40&orientation=landscape"
+                alt="Photography Business"
+                class="w-full h-full object-cover object-top" />
+              <div
+                class="absolute inset-0 bg-primary bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span class="text-white font-medium">Start Exercise</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Business Basics</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Start your photography business
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Study Section -->
+      <section id="study" class="section">
+        <div class="mb-8">
+          <h1 class="text-3xl font-bold text-gray-900">Study</h1>
+          <p class="text-gray-600 mt-2">
+            Educational resources to enhance your knowledge
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- Study Items -->
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20history%20timeline%20with%20vintage%20cameras%20and%20important%20milestones%2C%20educational%20photography%20content%2C%20professional%20photography%20history%20teaching%20material&width=400&height=300&seq=41&orientation=landscape"
+                alt="Photography History"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">History of Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                From camera obscura to digital revolution
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=camera%20sensor%20types%20comparison%20with%20full%20frame%2C%20APS-C%2C%20and%20micro%20four%20thirds%20examples%2C%20educational%20photography%20content%2C%20professional%20camera%20technology%20teaching%20material&width=400&height=300&seq=42&orientation=landscape"
+                alt="Camera Sensors"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">
+                Camera Sensor Technology
+              </h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Understanding different sensor types
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=lens%20types%20comparison%20with%20wide%20angle%2C%20standard%2C%20and%20telephoto%20examples%2C%20educational%20photography%20content%2C%20professional%20lens%20technology%20teaching%20material&width=400&height=300&seq=43&orientation=landscape"
+                alt="Lens Types"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Understanding Lenses</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                From wide angle to telephoto
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=digital%20workflow%20diagram%20with%20shooting%2C%20organizing%2C%20editing%2C%20and%20output%20stages%2C%20educational%20photography%20content%2C%20professional%20workflow%20teaching%20material&width=400&height=300&seq=44&orientation=landscape"
+                alt="Digital Workflow"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Digital Workflow</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                From capture to final output
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=famous%20photographers%20portraits%20with%20their%20iconic%20works%2C%20photography%20masters%20study%2C%20educational%20photography%20content%2C%20professional%20photography%20history%20teaching%20material&width=400&height=300&seq=45&orientation=landscape"
+                alt="Famous Photographers"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Masters of Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Studying the legends of the craft
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20genres%20comparison%20with%20examples%20of%20portrait%2C%20landscape%2C%20street%2C%20and%20documentary%20styles%2C%20educational%20photography%20content%2C%20professional%20photography%20genres%20teaching%20material&width=400&height=300&seq=46&orientation=landscape"
+                alt="Photography Genres"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Photography Genres</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Exploring different styles and approaches
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photo%20editing%20software%20comparison%20with%20interface%20examples%2C%20Photoshop%2C%20Lightroom%2C%20and%20Capture%20One%2C%20educational%20photography%20content%2C%20professional%20editing%20software%20teaching%20material&width=400&height=300&seq=47&orientation=landscape"
+                alt="Editing Software"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Editing Software Guide</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Comparing top photo editing tools
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20ethics%20diagram%20with%20examples%20of%20photojournalism%20standards%2C%20privacy%20concerns%2C%20and%20image%20manipulation%20limits%2C%20educational%20photography%20content%2C%20professional%20ethics%20teaching%20material&width=400&height=300&seq=48&orientation=landscape"
+                alt="Photography Ethics"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Ethics in Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Moral considerations for photographers
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=color%20management%20workflow%20with%20monitor%20calibration%2C%20color%20spaces%2C%20and%20printing%20profiles%2C%20educational%20photography%20content%2C%20professional%20color%20management%20teaching%20material&width=400&height=300&seq=49&orientation=landscape"
+                alt="Color Management"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Color Management</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Ensuring color accuracy across devices
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=printing%20techniques%20comparison%20with%20examples%20of%20different%20paper%20types%2C%20finishes%2C%20and%20printing%20methods%2C%20educational%20photography%20content%2C%20professional%20printing%20teaching%20material&width=400&height=300&seq=50&orientation=landscape"
+                alt="Printing Techniques"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Fine Art Printing</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Creating exhibition-quality prints
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20copyright%20and%20legal%20issues%20diagram%20with%20licensing%20models%2C%20contracts%2C%20and%20intellectual%20property%20concepts%2C%20educational%20photography%20content%2C%20professional%20legal%20teaching%20material&width=400&height=300&seq=51&orientation=landscape"
+                alt="Copyright Issues"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">
+                Copyright and Legal Issues
+              </h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Protecting your intellectual property
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20portfolio%20development%20guide%20with%20layout%20examples%2C%20curation%20strategies%2C%20and%20presentation%20formats%2C%20educational%20photography%20content%2C%20professional%20portfolio%20teaching%20material&width=400&height=300&seq=52&orientation=landscape"
+                alt="Portfolio Development"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Portfolio Development</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Creating a compelling body of work
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20critique%20methods%20with%20visual%20analysis%20examples%2C%20composition%20breakdown%2C%20and%20technical%20evaluation%2C%20educational%20photography%20content%2C%20professional%20critique%20teaching%20material&width=400&height=300&seq=53&orientation=landscape"
+                alt="Photo Critique"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Art of Critique</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Analyzing and improving images
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20project%20planning%20guide%20with%20concept%20development%2C%20shot%20lists%2C%20and%20execution%20strategies%2C%20educational%20photography%20content%2C%20professional%20project%20teaching%20material&width=400&height=300&seq=54&orientation=landscape"
+                alt="Project Planning"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Project Development</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Creating cohesive photo series
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20storytelling%20techniques%20with%20visual%20narrative%20examples%2C%20sequencing%20methods%2C%20and%20emotional%20impact%20strategies%2C%20educational%20photography%20content%2C%20professional%20storytelling%20teaching%20material&width=400&height=300&seq=55&orientation=landscape"
+                alt="Visual Storytelling"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Visual Storytelling</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Crafting narratives with images
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20exhibition%20planning%20guide%20with%20gallery%20layout%2C%20lighting%20setup%2C%20and%20presentation%20formats%2C%20educational%20photography%20content%2C%20professional%20exhibition%20teaching%20material&width=400&height=300&seq=56&orientation=landscape"
+                alt="Exhibition Planning"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Exhibition Design</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Showcasing your work effectively
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20book%20design%20guide%20with%20layout%20examples%2C%20sequencing%20strategies%2C%20and%20publishing%20options%2C%20educational%20photography%20content%2C%20professional%20book%20design%20teaching%20material&width=400&height=300&seq=57&orientation=landscape"
+                alt="Book Design"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Photo Book Creation</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Designing and publishing photo books
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20marketing%20strategies%20with%20social%20media%20examples%2C%20website%20design%2C%20and%20client%20acquisition%20methods%2C%20educational%20photography%20content%2C%20professional%20marketing%20teaching%20material&width=400&height=300&seq=58&orientation=landscape"
+                alt="Marketing Strategies"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Marketing Your Work</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Promoting your photography effectively
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20education%20and%20career%20paths%20diagram%20with%20learning%20resources%2C%20degree%20programs%2C%20and%20professional%20development%20options%2C%20educational%20photography%20content%2C%20professional%20career%20teaching%20material&width=400&height=300&seq=59&orientation=landscape"
+                alt="Career Paths"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Photography Careers</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Exploring professional pathways
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="gallery-item bg-white rounded shadow-sm overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=photography%20future%20trends%20with%20AI%2C%20computational%20photography%2C%20and%20emerging%20technologies%20examples%2C%20educational%20photography%20content%2C%20professional%20future%20trends%20teaching%20material&width=400&height=300&seq=60&orientation=landscape"
+                alt="Future Trends"
+                class="w-full h-full object-cover object-top" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900">Future of Photography</h3>
+              <p class="text-sm text-gray-500 mt-1">
+                Emerging trends and technologies
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm text-primary mt-2">
+                <span>Read more</span>
+                <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                  <i class="ri-arrow-right-line"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Logout Confirmation Modal -->
+    <div
+      id="logoutModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+      <div class="bg-white rounded-lg p-6 max-w-sm w-full">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Confirm Logout</h3>
+        <p class="text-gray-600 mb-6">
+          Are you sure you want to log out of your account?
+        </p>
+        <div class="flex justify-end space-x-3">
+          <button
+            id="cancelLogout"
+            class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button hover:bg-gray-200 transition-colors whitespace-nowrap">
+            Cancel
+          </button>
+          <button
+            id="confirmLogout"
+            class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Navigation functionality
+        const navItems = document.querySelectorAll(".nav-item");
+        const sections = document.querySelectorAll(".section");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            // Remove active class from all nav items
+            navItems.forEach((navItem) => {
+              navItem.classList.remove("active");
+            });
+            // Add active class to clicked nav item
+            this.classList.add("active");
+            // Hide all sections
+            sections.forEach((section) => {
+              section.classList.remove("active");
+            });
+            // Show corresponding section
+            const targetId = this.getAttribute("href").substring(1);
+            document.getElementById(targetId).classList.add("active");
+          });
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Logout functionality
+        const logoutLink = document.querySelector('a[href="#"]');
+        const logoutModal = document.getElementById("logoutModal");
+        const cancelLogout = document.getElementById("cancelLogout");
+        const confirmLogout = document.getElementById("confirmLogout");
+        logoutLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          logoutModal.classList.remove("hidden");
+        });
+        cancelLogout.addEventListener("click", function () {
+          logoutModal.classList.add("hidden");
+        });
+        confirmLogout.addEventListener("click", function () {
+          // Simulate logout - in a real app, this would redirect to logout endpoint
+          alert("You have been logged out successfully.");
+          logoutModal.classList.add("hidden");
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Practice section item click handler
+        const practiceItems = document.querySelectorAll(
+          "#practice .gallery-item"
+        );
+        practiceItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            const title = this.querySelector("h3").textContent;
+            alert(`Starting practice exercise: ${title}`);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

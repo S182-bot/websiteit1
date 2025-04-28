@@ -1,0 +1,720 @@
+/* Global Styles */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --school-color: #1a5276;
+  --school-secondary: #2980b9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Header & Navigation */
+header {
+  background-color: var(--school-color);
+  color: white;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Styles */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.circle-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--school-color),
+    var(--school-secondary)
+  );
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.circle-logo img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.glow-effect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 30%,
+    transparent 70%
+  );
+  animation: rotateGlow 3s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes rotateGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.circle-logo:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 0 25px rgba(231, 76, 60, 0.7);
+}
+
+.circle-logo:hover .glow-effect {
+  background: conic-gradient(
+    from 0deg,
+    rgba(231, 76, 60, 0.3) 0%,
+    rgba(255, 255, 255, 0.9) 30%,
+    rgba(231, 76, 60, 0.3) 70%
+  );
+  opacity: 1;
+}
+
+.logo-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.logo-text span {
+  color: var(--secondary-color);
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 3rem;
+}
+
+.nav-links a {
+  font-size: 1.6rem;
+  font-weight: 600;
+  position: relative;
+  padding: 0.5rem 0;
+  text-decoration: none;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--secondary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Mobile Menu */
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../images/wowers.jpg") no-repeat center center/cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.hero h1 {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  animation: fadeInDown 1s ease;
+}
+
+.hero h1 span {
+  color: var(--secondary-color);
+}
+
+.hero p {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease;
+}
+
+.hero .btn {
+  background-color: white;
+  border: 1px solid rgb(41, 118, 211);
+  color: rgb(41, 118, 211);
+  height: 50px; /* mas mataas */
+  padding: 0 20px; /* dagdag sa left at right space */
+  font-size: 20px; /* laki ng text */
+  font-weight: 500; /* medyo bold */
+  cursor: pointer;
+  border-radius: 4px; /* mas smooth na rounded corners */
+  margin-right: 8px;
+  text-decoration: none; /* para walang underline */
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.hero .btn:hover {
+  background-color: rgb(41, 118, 211);
+  color: white;
+}
+
+.hero .btn:active {
+  opacity: 0.7;
+}
+
+/* Sections */
+.section {
+  padding: 8rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 5rem;
+  color: var(--school-color);
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--secondary-color);
+}
+
+.dark-bg {
+  background-color: #f8f9fa;
+}
+
+/* About Section */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.gallery img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth animation */
+}
+
+/* Hover effect */
+.gallery img:hover {
+  transform: scale(1.05); /* zoom in ng konti */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* ganda ng shadow */
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* space sa pagitan ng bawat skill item */
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.skill-item {
+  background-color: white;
+  width: 250px; /* fixed width para pantay lahat */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* light shadow default */
+}
+
+.skill-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%; /* para bilog yung picture, optional */
+  margin-bottom: 15px;
+}
+
+/* Hover effect sa buong skill item */
+.skill-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.skill-item h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #2976d3; /* optional: kulay ng title */
+}
+
+.skill-item p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Section Members */
+.section-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+}
+
+.section-member {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.section-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image hover effect */
+.section-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  border: 5px solid var(--school-secondary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-member img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: #000;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+section .gallery img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+section .gallery img:hover {
+  transform: scale(1.1);
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.section-member h3 {
+  font-size: 1.8rem;
+  color: var(--school-color);
+}
+
+.section-member p {
+  font-size: 1.4rem;
+  color: #666;
+}
+
+/* Adviser Section */
+.adviser-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.adviser-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.adviser-image img {
+  max-width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.adviser-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.adviser-info h3 {
+  font-size: 2.5rem;
+  color: var(--school-color);
+}
+
+.position {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.contact-info {
+  margin-top: 2rem;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.contact-info i {
+  color: var(--secondary-color);
+  width: 20px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background-color: var(--school-color);
+  color: white;
+  padding: 5rem 5% 2rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.footer-section h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--secondary-color);
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 1rem;
+}
+
+.footer-section ul li a:hover {
+  color: var(--secondary-color);
+  padding-left: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.4rem;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    right: 0;
+    top: 80px;
+    background-color: var(--school-color);
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 2rem 0;
+    clip-path: circle(0px at 90% -10%);
+    transition: all 0.5s ease-out;
+  }
+
+  .nav-links.active {
+    clip-path: circle(1000px at 90% -10%);
+  }
+
+  .nav-links li {
+    margin: 1.5rem 0;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .burger.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .burger.active .line2 {
+    opacity: 0;
+  }
+
+  .burger.active .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+  }
+
+  .hero p {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    font-size: 1.6rem;
+  }
+
+  .section-title {
+    font-size: 2.8rem;
+  }
+}
+
+#loginModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: relative;
+  margin: 15% auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
